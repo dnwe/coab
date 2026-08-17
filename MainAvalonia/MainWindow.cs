@@ -72,13 +72,22 @@ namespace MainAvalonia
 
             engineThread = new Thread(EngineThread);
             engineThread.Name = "Engine";
+            engineThread.IsBackground = true;
             engineThread.Start();
         }
 
         void EngineThread()
         {
-            engine.seg001.__SystemInit(EngineStopped);
-            engine.seg001.PROGRAM();
+            try
+            {
+                engine.seg001.__SystemInit(EngineStopped);
+                engine.seg001.PROGRAM();
+            }
+            catch (engine.EngineStopException)
+            {
+                // EngineStop already ran the stopped callback
+                return;
+            }
 
             EngineStopped();
         }
