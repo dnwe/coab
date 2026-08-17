@@ -47,6 +47,8 @@ namespace Main
 
             Logger.SetExitFunc(engine.seg043.print_and_exit);
 
+            engine.seg044.SetSoundPlayer(new WinSoundPlayer());
+
             main = new MainForm();
 
             ThreadStart threadDelegate = new ThreadStart(EngineThread);

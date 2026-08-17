@@ -27,8 +27,6 @@ namespace engine
         internal static void ConfigGame()
         {
             gbl.exe_path = System.IO.Directory.GetCurrentDirectory();
-
-            seg044.SoundInit();
         }
 
         public static void PROGRAM()
